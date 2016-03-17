@@ -1,0 +1,18 @@
+server:
+  image: node:4.4.0
+  volumes:
+    - "./:/app"
+  ports:
+    - "6789:6789"
+  command: "node /app/index.js"
+  links:
+    - redis
+    - mongo
+
+redis:
+  image: redis:2.8.23
+
+mongo:
+  image: mongo:2.6
+  volumes:
+    - "../mongo:/data/db"
